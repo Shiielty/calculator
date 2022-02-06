@@ -7,34 +7,38 @@ body {
   justify-content: center;
   box-sizing: border-box;
   min-height: 100vh;
+  background-color: rgb(10, 22, 39);
 }
 
 .calc-container {
   display: flex;
   align-content: center;
   flex-wrap: wrap;
-  gap: 4px;
-  width: 215px;
-  background-color: rgb(122, 122, 122);
+  gap: 8px;
+  width: 430px;
+  background-color: rgb(161, 161, 161);
   margin: auto 0;
   padding: 10px;
   border-radius: 10px;
+  border: 5px solid rgb(219, 219, 219);
 }
 
 .display {
-  width: 215px;
+  width: 430px;
+  height: 2em;
   padding: 10px 10px;
   border-radius: 10px;
   text-align: right;
-  background-color: rgb(196, 196, 196);
+  color: white;
+  background-color: rgb(27, 27, 27);
 }
 
 .long-btn {
-  width: 100px;
+  width: 200px;
 }
 
 button {
   flex: auto;
   padding: 10px 0;
-  width: 50px;
+  width: 100px;
 }
