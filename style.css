@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.calc-container {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 430px;
+  background-color: rgb(122, 122, 122);
+  margin: auto 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.display {
+  width: 430px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  text-align: right;
+  background-color: rgb(196, 196, 196);
+}
+
+.long-btn {
+  width: 200px;
+}
+
+button {
+  flex: auto;
+  padding: 10px 0;
+  width: 100px;
+}
