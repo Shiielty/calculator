@@ -33,22 +33,28 @@ function operate(operator, a, b) {
 }
 
 const display = document.querySelector(".display p");
-const btn = document.querySelectorAll(".btn");
+const numBtn = document.querySelectorAll(".number-btn");
 const clear = document.querySelector(".clear");
 
-btn.forEach((item) => {
+let displayValue = "0";
+
+numBtn.forEach((item) => {
   item.addEventListener("click", (e) => {
-    console.log(item.textContent);
     const input = item.textContent;
     if (input != 0 && display.textContent == 0) {
       display.textContent = "";
-      display.textContent += item.textContent;
+      display.textContent += input;
+      displayValue = display.textContent;
     } else if (display.textContent != 0) {
-      display.textContent += item.textContent;
+      display.textContent += input;
+      displayValue = display.textContent;
     }
+    console.log(displayValue);
   });
 });
 
 clear.addEventListener("click", () => {
   display.textContent = "0";
+  displayValue = display.textContent;
+  console.log(displayValue);
 });
