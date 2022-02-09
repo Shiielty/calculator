@@ -1,22 +1,22 @@
 console.log("Hi!");
 
 function add(a, b) {
-  return a + b;
+  return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
-  return a - b;
+  return Number(a) - Number(b);
 }
 
 function multiply(a, b) {
-  return a * b;
+  return Number(a) * Number(b);
 }
 
 function divide(a, b) {
-  if (b === 0) {
-    return "Cannot be divided by 0";
+  if (b == 0) {
+    return errorMsg;
   } else {
-    return a / b;
+    return Number(a) / Number(b);
   }
 }
 
@@ -35,26 +35,72 @@ function operate(operator, a, b) {
 const display = document.querySelector(".display p");
 const numBtn = document.querySelectorAll(".number-btn");
 const clear = document.querySelector(".clear");
+const operatorBtn = document.querySelectorAll(".operator-btn");
+const equalBtn = document.querySelector(".equal-btn");
 
 let displayValue = "0";
+let operator = "";
+let firstNum = "0";
+let secondNum = "";
+let result = "";
+const errorMsg = "Cannot be divided by 0";
 
-numBtn.forEach((item) => {
-  item.addEventListener("click", (e) => {
-    const input = item.textContent;
-    if (input != 0 && display.textContent == 0) {
+numBtn.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const input = button.textContent;
+    if ((input != 0 && firstNum == 0 && operator == "") || firstNum == result) {
       display.textContent = "";
       display.textContent += input;
       displayValue = display.textContent;
+      firstNum = display.textContent;
     } else if (display.textContent != 0) {
       display.textContent += input;
       displayValue = display.textContent;
+      firstNum = display.textContent;
     }
-    console.log(displayValue);
+    // console.log(displayValue);
+    console.log(`input is: ${input}`);
+    console.log(`first number is: ${firstNum}`);
+    console.log(`result is: ${result}`);
+    console.log(`operator is: ${operator}`);
+    console.log(display.textContent);
   });
 });
 
 clear.addEventListener("click", () => {
   display.textContent = "0";
+  operator = "";
   displayValue = display.textContent;
-  console.log(displayValue);
+  // console.log(displayValue);
+});
+
+operatorBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (operator === "") {
+      // console.log("No operator declared");
+      operator = button.textContent;
+      firstNum = displayValue;
+      display.textContent += ` ${operator} `;
+      displayValue = display.textContent;
+    }
+  });
+});
+
+equalBtn.addEventListener("click", () => {
+  // console.log(displayValue);
+  let arrays = displayValue.split(" ");
+  // console.log(arrays);
+  firstNum = arrays[0];
+  operator = arrays[1];
+  secondNum = arrays[2];
+  result = operate(operator, firstNum, secondNum);
+  if (result == errorMsg) {
+    firstNum = "0";
+    display.textContent = errorMsg;
+    operator = "";
+  } else {
+    firstNum = result;
+    display.textContent = firstNum;
+    operator = "";
+  }
 });
