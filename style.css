@@ -33,6 +33,11 @@ body {
   background-color: rgb(27, 27, 27);
 }
 
+.display p {
+  margin: 0px;
+  padding: 0px;
+}
+
 .long-btn {
   width: 200px;
 }

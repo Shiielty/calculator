@@ -31,3 +31,24 @@ function operate(operator, a, b) {
     return divide(a, b);
   }
 }
+
+const display = document.querySelector(".display p");
+const btn = document.querySelectorAll(".btn");
+const clear = document.querySelector(".clear");
+
+btn.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    console.log(item.textContent);
+    const input = item.textContent;
+    if (input != 0 && display.textContent == 0) {
+      display.textContent = "";
+      display.textContent += item.textContent;
+    } else if (display.textContent != 0) {
+      display.textContent += item.textContent;
+    }
+  });
+});
+
+clear.addEventListener("click", () => {
+  display.textContent = "0";
+});
