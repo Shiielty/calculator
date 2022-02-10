@@ -9,13 +9,20 @@ function subtract(a, b) {
 }
 
 function multiply(a, b) {
-  return Number(a) * Number(b);
+  if (b === "") {
+    return Number(a);
+  } else {
+    return Number(a) * Number(b);
+  }
 }
 
 function divide(a, b) {
-  if (b == 0) {
+  if (b === "0") {
     return errorMsg;
-  } else {
+  } else if (b === "") {
+    return Number(a);
+  }
+  else {
     return Number(a) / Number(b);
   }
 }
