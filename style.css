@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: Roboto, sans-serif;
 }
 
 .container {
@@ -24,8 +25,9 @@ body {
 }
 
 .display {
+  font-size: 16px;
   width: 430px;
-  height: 2em;
+  height: 32px;
   padding: 10px 10px;
   border-radius: 10px;
   text-align: right;
@@ -38,12 +40,17 @@ body {
   padding: 0px;
 }
 
-.long-btn {
-  width: 200px;
+.btn.long-btn {
+  width: 210px;
 }
 
-button {
+.long-btn.clear {
+  width: 400px;
+}
+
+.btn {
   flex: auto;
-  padding: 10px 0;
+  padding: 15px 0;
   width: 100px;
+  font-size: 14px;
 }

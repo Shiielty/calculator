@@ -58,17 +58,12 @@ numBtn.forEach((button) => {
       displayValue = display.textContent;
       firstNum = display.textContent;
     }
-    // console.log(displayValue);
-    console.log(`input is: ${input}`);
-    console.log(`first number is: ${firstNum}`);
-    console.log(`result is: ${result}`);
-    console.log(`operator is: ${operator}`);
-    console.log(display.textContent);
   });
 });
 
 clear.addEventListener("click", () => {
   display.textContent = "0";
+  firstNum = "0"
   operator = "";
   displayValue = display.textContent;
   // console.log(displayValue);
@@ -76,7 +71,7 @@ clear.addEventListener("click", () => {
 
 operatorBtn.forEach((button) => {
   button.addEventListener("click", () => {
-    if (operator === "") {
+    if (operator === "" && display.textContent != errorMsg) {
       // console.log("No operator declared");
       operator = button.textContent;
       firstNum = displayValue;
@@ -87,20 +82,24 @@ operatorBtn.forEach((button) => {
 });
 
 equalBtn.addEventListener("click", () => {
-  // console.log(displayValue);
-  let arrays = displayValue.split(" ");
-  // console.log(arrays);
-  firstNum = arrays[0];
-  operator = arrays[1];
-  secondNum = arrays[2];
-  result = operate(operator, firstNum, secondNum);
-  if (result == errorMsg) {
-    firstNum = "0";
-    display.textContent = errorMsg;
-    operator = "";
+  if (operator == "" && display.textContent != result) {
+    display.textContent = displayValue;
   } else {
-    firstNum = result;
-    display.textContent = firstNum;
-    operator = "";
+    // console.log(displayValue);
+    let arrays = displayValue.split(" ");
+    // console.log(arrays);
+    firstNum = arrays[0];
+    operator = arrays[1];
+    secondNum = arrays[2];
+    result = operate(operator, firstNum, secondNum);
+    if (result == errorMsg) {
+      firstNum = "0";
+      display.textContent = errorMsg;
+      operator = "";
+    } else {
+      firstNum = result;
+      display.textContent = firstNum;
+      operator = "";
+    }
   }
 });
