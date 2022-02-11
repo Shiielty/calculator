@@ -17,12 +17,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if (b === "0") {
-    return errorMsg;
-  } else if (b === "") {
+  if (b === "") {
     return Number(a);
-  }
-  else {
+  } else {
     return Number(a) / Number(b);
   }
 }
@@ -55,7 +52,11 @@ const errorMsg = "Cannot be divided by 0";
 numBtn.forEach((button) => {
   button.addEventListener("click", (e) => {
     const input = button.textContent;
-    if ((input != 0 && firstNum == 0 && operator == "") || firstNum == result) {
+    if (
+      (input != 0 && firstNum == 0 && operator == "") ||
+      firstNum == result ||
+      display.textContent == errorMsg
+    ) {
       display.textContent = "";
       display.textContent += input;
       displayValue = display.textContent;
@@ -70,7 +71,7 @@ numBtn.forEach((button) => {
 
 clear.addEventListener("click", () => {
   display.textContent = "0";
-  firstNum = "0"
+  firstNum = "0";
   operator = "";
   displayValue = display.textContent;
   // console.log(displayValue);
@@ -91,15 +92,15 @@ operatorBtn.forEach((button) => {
 equalBtn.addEventListener("click", () => {
   if (operator == "" && display.textContent != result) {
     display.textContent = displayValue;
+  } else if (display.textContent == result) {
+    display.textContent = result;
   } else {
-    // console.log(displayValue);
     let arrays = displayValue.split(" ");
-    // console.log(arrays);
     firstNum = arrays[0];
     operator = arrays[1];
     secondNum = arrays[2];
     result = operate(operator, firstNum, secondNum);
-    if (result == errorMsg) {
+    if (result == "Infinity" || Number.isNaN(result) === true) {
       firstNum = "0";
       display.textContent = errorMsg;
       operator = "";
